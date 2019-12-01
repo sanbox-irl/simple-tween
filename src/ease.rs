@@ -63,3 +63,9 @@ pub enum Ease {
     // BounceOut,
     // BounceInOut,
 }
+
+impl Default for Ease {
+    fn default() -> Self {
+        Ease::Linear
+    }
+}
