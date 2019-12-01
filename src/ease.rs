@@ -1,4 +1,23 @@
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+use strum_macros::{Display, EnumCount, EnumIter, EnumString};
+
+#[derive(
+    Debug,
+    Display,
+    PartialEq,
+    Ord,
+    PartialOrd,
+    Eq,
+    Copy,
+    Clone,
+    Hash,
+    EnumIter,
+    EnumString,
+    EnumCount,
+    Serialize,
+    Deserialize,
+    typename::TypeName,
+)]
+#[strum(serialize_all = "snake_case")]
 pub enum Ease {
     Linear,
 
