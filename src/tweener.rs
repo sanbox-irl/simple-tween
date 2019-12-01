@@ -1,5 +1,6 @@
 use super::{tween, Ease};
 
+#[derive(Default)]
 pub struct Tweener {
     pub current_value: f32,
     pub alive: bool,
