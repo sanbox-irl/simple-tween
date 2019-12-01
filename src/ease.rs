@@ -1,3 +1,4 @@
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Ease {
     Linear,
 
@@ -24,11 +25,12 @@ pub enum Ease {
     CircularIn,
     CircularOut,
     CircularInOut,
-
+    // Fuck this ease, it's weird and who likes it
     // ExponentialIn,
     // ExponentialOut,
     // ExponentialInOut,
 
+    // Eventually, maybe!
     // ElasticIn,
     // ElasticOut,
     // ElasticInOut,

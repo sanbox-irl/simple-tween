@@ -1,19 +1,21 @@
-use super::Ease;
+use super::{tween, Ease};
 
 pub struct Tweener {
-    pub value: f32,
+    pub current_value: f32,
     pub alive: bool,
+    pub ease: Ease,
 
+    start_value: f32,
     end_value: f32,
     time: f32,
     duration: f32,
-    ease: Ease,
 }
 
 impl Tweener {
     pub fn new(value: f32, end_value: f32, duration: f32, ease: Ease) -> Tweener {
         Tweener {
-            value,
+            current_value: value,
+            start_value: value,
             end_value,
             duration,
             ease,
@@ -27,14 +29,13 @@ impl Tweener {
             self.alive = false;
         } else {
             self.time += delta_time;
-
-            let value = self.tock(&self.ease, self.time, self.duration);
-            let amount = self.value.lerp(&self.end_value, value);
-            self.value = amount;
+            self.current_value = tween::tween(
+                self.ease,
+                self.time,
+                self.start_value,
+                self.end_value,
+                self.duration,
+            );
         }
-    }
-
-    pub fn set_ease(&mut self, ease: Ease) {
-        self.ease = ease;
     }
 }
