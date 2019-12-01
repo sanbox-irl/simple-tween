@@ -82,3 +82,22 @@ impl Tweener {
         self.duration
     }
 }
+
+use std::fmt;
+impl fmt::Debug for Tweener {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, 
+            "Tweener {{ current: {}, ease: {}, is_alive: {}, start: {}, end: {}, current_time: {}, duration: {}, at_time_count: {}, every_update_count: {}, on_complete_count: {}}}",
+            self.current_value, 
+            self.ease, 
+            self.alive, 
+            self.start_value, 
+            self.end_value, 
+            self.time, 
+            self.duration, 
+            self.at_time.len(), 
+            self.every_update.len(), 
+            self.on_complete.len()
+        )
+    }
+}
